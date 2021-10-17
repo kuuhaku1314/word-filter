@@ -21,13 +21,9 @@ func main() {
 	}
 	temp := strings.TrimSpace(string(data))
 	temp = strings.Replace(temp, "\n", "", -1)
-	temp = strings.Replace(temp," ", "", -1)
+	temp = strings.Replace(temp, " ", "", -1)
 	words := strings.Split(temp, ",")
-	buildTree, err := tree.BuildTree(words)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
+	buildTree := tree.BuildTree(words)
 	text := "有这么大嘛,aa啊，可以，奶子，阿阿阿"
 	ok, w := buildTree.FindFirstMatchedWord(text)
 	if ok {

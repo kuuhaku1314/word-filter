@@ -10,7 +10,7 @@ type Tree struct {
 }
 
 // BuildTree 通过给定敏感词数组建树
-func BuildTree(words []string) (*Tree, error) {
+func BuildTree(words []string) *Tree {
 	root := &Node{Children: map[string]*Node{}}
 	for _, word := range words {
 		runes := []rune(word)
@@ -28,7 +28,7 @@ func BuildTree(words []string) (*Tree, error) {
 			}
 		}
 	}
-	return &Tree{Root: root}, nil
+	return &Tree{Root: root}
 }
 
 func (t *Tree) FindFirstMatchedWord(text string) (ok bool, word string) {
